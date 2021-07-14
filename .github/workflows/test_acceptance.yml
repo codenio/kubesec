@@ -7,12 +7,16 @@ on:
     branches: [master]
     paths:
       - "**.go"
+      - "go.mod"
+      - "go.sum"
       - "**.bash"
       - "**.bats"
   pull_request:
     branches: [master]
     paths:
       - "**.go"
+      - "go.mod"
+      - "go.sum"
       - "**.bash"
       - "**.bats"
 
@@ -22,13 +26,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2.3.4
 
       - name: Set up Go
         uses: actions/setup-go@v2.1.3
         id: go
         with:
-          go-version: ^1.15
+          go-version: ^1.16
 
       - name: Build kubesec
         run: |
@@ -52,7 +56,7 @@ jobs:
         test: ["acceptance", "remote"]
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2.3.4
 
       - name: Download kubesec
         uses: actions/download-artifact@v2
